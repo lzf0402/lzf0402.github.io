@@ -1,0 +1,298 @@
+<!DOCTYPE html >
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+    <!-- BASE META -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SITE TITLE -->
+    <title>Phoenix.Lu's blog</title>
+
+    <!--SITE INFO -->
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Phoenix.Lu">
+    <meta name="application-name" content="Phoenix.Lu's blog">
+    <meta name="keywords" content="Thonatos,Thonatos.Yang,Grimrock,Juy">
+    <meta name="description" content="Blog about front-end development."/>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+
+    <!-- INCLUDE STYLE -->
+    <link href='http://fonts.useso.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'/>
+    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- SITE FAVICONS -->
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/css/style-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="/css/style.css">
+    <!--<![endif]-->
+
+</head>
+<body>
+<div class="layout">
+  <!--sidebar-->
+  <div class="sidebar">
+    <!-- Side Start -->
+    <!-- Siderbar  -->
+    <div class="header">
+        <img src="/images/0.jpg" class="avatar" alt="头像" />
+        <hgroup>
+            <h1 class="brand-title"><a href="" alt="Phoenix.Lu's blog"><img class="pure-img" src="/images/osbloglg.png"/></a></h1>
+            <h2 class="brand-tagline">
+                <small>To be a better FEDer.</small>
+            </h2>
+        </hgroup>
+
+        <div id="sidebar_nav" class="pure-menu pure-menu-open">
+            <ul>
+                
+                <li><a href="/">Home</a></li>
+                
+                <li><a href="https://github.com/lzf0402">Github</a></li>
+                
+                <li><a href="/about">About</a></li>
+                
+                <li><a href="/projects">Projects</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    <!-- Side End-->
+</div>
+
+  <!--content-->
+  
+<div class="content pure-g">
+    <div class=" pure-u-1">
+        <!-- A wrapper for all the blog posts start -->
+        <a href="#menu" id="menuLink" class="menu-link">
+    <span></span>
+</a>
+<div class="content-header">
+    <div id="content-header-nav" class="pure-menu pure-menu-open">
+        <ul>
+            <li><a href="">Phoenix.Lu's blog</a></li>
+            
+            <li><a href="/">Home</a></li>
+            
+            <li><a href="https://github.com/lzf0402">Github</a></li>
+            
+            <li><a href="/about">About</a></li>
+            
+            <li><a href="/projects">Projects</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+        <div class="posts">
+            <h1 class="content-subhead"> Post </h1>
+
+            <!-- A single blog post start -->
+
+          <section class="post">
+            <header class="post-header">
+              <h2 class="post-title">CSS3 Filter Effect</h2>
+              <p class="post-meta">
+    <time class="post-category post-category-design" datetime="2014-12-09T16:00:00.000Z" itemprop="datePublished">
+        Dec 10 2014
+    </time>
+    
+    
+    
+    <a class="post-category post-category-pure" href='/tags/CSS3/'>CSS3</a>
+    
+    ,
+    
+    
+    <a class="post-category post-category-pure" href='/tags/filter/'>filter</a>
+    
+    ,
+    
+    
+    <a class="post-category post-category-pure" href='/tags/filter-effect/'>filter effect</a>
+    
+    ,
+    
+    
+    <a class="post-category post-category-pure" href='/tags/blur/'>blur</a>
+    
+    
+    
+</p>
+            </header>
+            <div class="post-description">
+              <p style="font-size:12px;border:0;border-left:3px solid #ddd;background:transparent;line-height:20px;padding:10px;color:#999;">之前项目开发中遇到要把图片模糊的需求，于是google了一把，采用了<code>filter-blur</code>来做，后发现<code>filter</code>是个好家伙啊，能处理很多图片特效，不仅仅是blur(敢情浏览器是想把自己做成图片处理器了)。再于是从Mozilla的<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter%E6%BB%A4%E9%95%9C" target="_blank" rel="external">web技术文档</a>（尝试翻译成了中文，英文不好请别拍砖）上进一步了解了下filter这个css3新内容，注意此filter非CSS1里的filter属性，而是filter-effects，对应的<a href="http://www.w3.org/TR/filter-effects/" target="_blank" rel="external">W3C规范</a>。</p>
+
+<h2 id="初探filter特效之灰度">初探filter特效之灰度</h2>
+<p>废话不多说，先甩个图来看下效果：</p>
+<p> <img src="https://raw.githubusercontent.com/lzf0402/css-filter/master/demo/show1.png" alt=""></p>
+<p>上图展示的是filter<strong>众多效果中的一种</strong>，即灰度滤镜效果。左边的图是原图，右边的图设置了<code>filter：grayscale(1)</code>这一属性（目前还需要加浏览器前缀来使用，关于浏览器支持度<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter%E6%BB%A4%E9%95%9C#Browser_compatibility" target="_blank" rel="external">戳这里</a>），如你所见，图片变成了一张灰度图像。这一功能是否立马触动了你的脑洞，在某些举国悲痛的日子里，需要全站一夜变灰以示哀悼的，就可以用这个属性轻松实现啦。当然，你不得不考虑兼容性，那么问题来了，兼容技术哪家强？</p>
+<p><strong>CSS兼容：</strong></p>
+<pre><code><span class="class">.gray</span> <span class="rules">{ 
+    <span class="rule"><span class="attribute">-webkit-filter</span>:<span class="value"> <span class="function">grayscale</span>(<span class="number">100%</span>)</span></span>;
+    <span class="rule"><span class="attribute">-moz-filter</span>:<span class="value"> <span class="function">grayscale</span>(<span class="number">100%</span>)</span></span>;
+    <span class="rule"><span class="attribute">-ms-filter</span>:<span class="value"> <span class="function">grayscale</span>(<span class="number">100%</span>)</span></span>;
+    <span class="rule"><span class="attribute">-o-filter</span>:<span class="value"> <span class="function">grayscale</span>(<span class="number">100%</span>)</span></span>;
+    <span class="rule"><span class="attribute">filter</span>:<span class="value"> <span class="function">grayscale</span>(<span class="number">100%</span>)</span></span>;
+    <span class="rule"><span class="attribute">filter</span>:<span class="value"> gray</span></span>; <span class="comment">/* IE6\7\8\9 */</span>
+<span class="rule">}</span></span>
+</code></pre><p>css的兼容方式，已基本能兼容绝大多数浏览器了。只是像IE10这种，向上不支持<code>grayscale</code>这个新的属性值，向下又抛弃了兼容旧的<code>filter</code>，那这种情况，就需要尝试用JS来兼容啦~</p>
+<p><strong>JS兼容：</strong></p>
+<pre><code>// 引入james大神的灰度处理脚本
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://james.padolsey.com/demos/grayscale/grayscale.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+// 调用grayscale方法处理图片
+grayscale(imgNodes); //or 处理整个文档：grayscale(document.body)
+</code></pre><p>实现原理：获取图像的base64数据并对每个像素进行灰度转换;如果是整页处理，会把整个页面生成一张灰度图作为body的background-image。</p>
+<p>关于灰度滤镜，想了解更多，可以阅<a href="http://www.zhangxinxu.com/wordpress/2012/08/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E9%BB%91%E7%99%BD%E7%9A%84/" target="_blank" rel="external">此文</a>。</p>
+<h2 id="认识filter">认识filter</h2>
+<p>CSS滤镜属性，可以在元素呈现之前，为元素的渲染提供一些效果，如模糊、颜色转移之类的。滤镜常用于调整图像、背景、边框的渲染。目前<code>Filter Effects Module</code>还只是W3C的一个草案，浏览器还不完全支持，在使用时需要加浏览器前缀。</p>
+<h4 id="filter语法">filter语法</h4>
+<pre><code><span class="comment">/* 设置滤镜函数（可多个，空格分开） */</span>
+<span class="built_in">filter</span>: &lt;<span class="built_in">filter</span>-<span class="function"><span class="keyword">function</span>&gt; [&lt;<span class="title">filter-function</span>&gt;]* | <span class="title">none</span></span>
+<span class="comment">/* 引入定义了filter效果的svg资源，且可设置特定id的效果 */</span>
+<span class="built_in">filter</span>: url(svg-url<span class="comment">#element-id)</span>
+</code></pre><p>以上的语法，展示了设置filter属性的方式。 filter标准定义了一些已实现预设效果的函数（如<code>grayscale</code>、<code>blur</code>等）。你也可以自定义特效，将设置了SVG滤镜的xml文件，用URL引入，且可以包含一个锚点来指定一个具体的滤镜效果。filter属性<strong>默认值</strong>为none,可应用于图像和容器元素，没有继承性。</p>
+<ul>
+<li><p>预置的滤镜函数（filter-function）有：</p>
+<pre><code>  &lt;filter-<span class="function"><span class="keyword">function</span>&gt; = &lt;<span class="title">blur</span><span class="params">()</span>&gt; | &lt;<span class="title">brightness</span><span class="params">()</span>&gt; | &lt;<span class="title">contrast</span><span class="params">()</span>&gt; | &lt;<span class="title">drop</span>-<span class="title">shadow</span><span class="params">()</span>&gt;
+  | &lt;<span class="title">grayscale</span><span class="params">()</span>&gt; | &lt;<span class="title">hue</span>-<span class="title">rotate</span><span class="params">()</span>&gt; | &lt;<span class="title">invert</span><span class="params">()</span>&gt; | &lt;<span class="title">opacity</span><span class="params">()</span>&gt; | &lt;<span class="title">sepia</span><span class="params">()</span>&gt; | &lt;<span class="title">saturate</span><span class="params">()</span>&gt;</span>
+</code></pre><p>  filter属性可接受多个滤镜函数，展示多个滤镜叠加后的效果。</p>
+</li>
+<li><p>URL函数引入svg滤镜</p>
+<p>  SVG滤镜资源（<a href="http://www.w3.org/TR/filter-effects-1/#FilterElement" target="_blank" rel="external">SVG Filter Sources</a>）是指以xml文件格式定义的svg滤镜效果集，可以通过URL引入并且通过锚点（#element-id）指定具体的一个滤镜元素。如：</p>
+<pre><code>  <span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+  <span class="doctype">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;</span>
+  <span class="tag">&lt;<span class="title">svg</span> <span class="attribute">version</span>=<span class="value">"1.1"</span> 
+   <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/2000/svg"</span>
+   <span class="attribute">xmlns:xlink</span>=<span class="value">"http://www.w3.org/1999/xlink"</span>
+   <span class="attribute">xmlns:ev</span>=<span class="value">"http://www.w3.org/2001/xml-events"</span> 
+   <span class="attribute">baseProfile</span>=<span class="value">"full"</span>&gt;</span>     
+      <span class="tag">&lt;<span class="title">defs</span>&gt;</span>
+          <span class="comment">&lt;!-- 此处定义滤镜 --&gt;</span>
+          <span class="tag">&lt;<span class="title">filter</span> <span class="attribute">id</span>=<span class="value">"blur"</span>&gt;</span>
+              <span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceAlpha"</span> <span class="attribute">stdDeviation</span>=<span class="value">"4"</span> <span class="attribute">result</span>=<span class="value">"blur"</span>/&gt;</span>
+                <span class="tag">&lt;<span class="title">feOffset</span> <span class="attribute">in</span>=<span class="value">"blur"</span> <span class="attribute">dx</span>=<span class="value">"4"</span> <span class="attribute">dy</span>=<span class="value">"4"</span> <span class="attribute">result</span>=<span class="value">"offsetBlur"</span>/&gt;</span>
+          <span class="tag">&lt;/<span class="title">filter</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">defs</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">svg</span>&gt;</span>
+</code></pre><p>想要应用此svg文件中定义的滤镜效果，只需url引入该文件（可设#blur锚点）作为filter属性的值就可以了。其中<code>feGaussianBlur</code>、<code>feOffset</code>称之为<strong>filter primitive</strong>（去W3C<a href="http://www.w3.org/TR/filter-effects-1/#FilterElement" target="_blank" rel="external">了解更多</a>的滤镜图元）。</p>
+</li>
+</ul>
+<h2 id="更多filter特效">更多filter特效</h2>
+<p>除了上面所述的<code>grayscale</code>，灰度滤镜外，还有很多预设的滤镜特效，即<code>filter-function</code>，一起来了解下~</p>
+<ul>
+<li><p>blur()</p>
+<p>  给图像设置高斯模糊。参数值设定高斯函数的标准差，或者是屏幕上以多少像素融在一起， 所以值越大越模糊；如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值。</p>
+<pre><code>  filter: blur(5px);
+  <span class="comment">&lt;!-- 对应的filter primitive --&gt;</span>
+  <span class="tag">&lt;<span class="title">feGaussianBlur</span> <span class="attribute">in</span>=<span class="value">"SourceGraphic"</span> <span class="attribute">stdDeviation</span>=<span class="value">"5"</span>/&gt;</span>
+</code></pre><p>   <img src="https://raw.githubusercontent.com/lzf0402/css-filter/master/demo/show2.png" alt=""></p>
+<p>  高斯模糊还是它的应用场景的，许多设计师追求的<strong>毛玻璃</strong>效果就可以靠它来实现了。结合css3的transition（or animation)或者js动态改变style.<strong>webkitFilter</strong>的值，就可以实现从清晰到模糊的一些交互效果。</p>
+</li>
+<li><p>brightness()</p>
+<p>  给图片应用一种线性乘法，使其看起来更亮或更暗。如果值是0%，图像会全黑。值是100%，则图像无变化。其他的值对应线性乘数效果。值超过100%也是可以的，图像会比原来更亮。如果没有设定值，默认是1。</p>
+<pre><code>  filter: brightness(0.5);
+  <span class="comment">&lt;!-- 对应的filter primitive --&gt;</span>
+  <span class="tag">&lt;<span class="title">feComponentTransfer</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">feFuncR</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"[amount]"</span>/&gt;</span>
+      <span class="tag">&lt;<span class="title">feFuncG</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"[amount]"</span>/&gt;</span>
+      <span class="tag">&lt;<span class="title">feFuncB</span> <span class="attribute">type</span>=<span class="value">"linear"</span> <span class="attribute">slope</span>=<span class="value">"[amount]"</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="title">feComponentTransfer</span>&gt;</span>    
+</code></pre><p>   <img src="https://raw.githubusercontent.com/lzf0402/css-filter/master/demo/show3.png" alt=""></p>
+<p>  上述代码可以使图片比原来暗50%，如果参数设为2或200%，则会比原来亮1倍。</p>
+</li>
+<li><p>invert()<br>  反转输入图像。值定义转换的比例。值100%代表完全反转。值为0%则图像无变化。值在0%和100%之间，则是效果的线性乘子。 若值未设置，值默认是0。</p>
+<pre><code>  <span class="attribute">filter</span><span class="value">: <span class="function">invert</span>(<span class="number">100%</span>);</span>
+</code></pre><p>   <img src="https://raw.githubusercontent.com/lzf0402/css-filter/master/demo/show4.png" alt=""></p>
+</li>
+<li><p>opacity()<br>  转化图像的透明程度。值定义转换的比例。值为0%则是完全透明，值为100%则图像无变化。值在0%和100%之间，则是效果的线性乘子，也相当于图像样本乘以数量。 若值未设置，值默认是1。该函数与已有的opacity属性很相似，不同之处在于通过filter，一些浏览器为了提升性能会提供硬件加速。</p>
+<pre><code>  <span class="attribute">filter</span><span class="value">: <span class="function">opacity</span>(<span class="number">20%</span>);</span>
+</code></pre><p>   <img src="https://raw.githubusercontent.com/lzf0402/css-filter/master/demo/show5.png" alt=""></p>
+</li>
+<li><p>其他</p>
+<p>  除了以上的滤镜效果外，还有<code>contrast()</code>【调整图像对比度】、drop-shadow()【设置图像阴影】、hue-rotate()【给图像应用色相旋转】、saturate()【转换图像饱和度】、sepia()【将图像转换为深褐色】，可以在此<a href="http://sandbox.runjs.cn/show/ichzytmc" target="_blank" rel="external">查看完整demo</a>。</p>
+</li>
+<li><p>复合函数</p>
+<p>  你可以组合任意数量的函数来控制渲染。下面的例子同时调整了图像的对比度和亮度：</p>
+<pre><code>  <span class="attribute">filter</span><span class="value">: <span class="function">contrast</span>(<span class="number">175%</span>) <span class="function">brightness</span>(<span class="number">3%</span>);</span>
+</code></pre></li>
+</ul>
+<p>【参考资料】</p>
+<ul>
+<li><a href="http://www.w3.org/TR/filter-effects-1/" target="_blank" rel="external">http://www.w3.org/TR/filter-effects-1/</a></li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2013/11/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E7%B3%8A%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2013/11/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E7%B3%8A%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/</a></li>
+<li><a href="http://css-tricks.com/almanac/properties/f/filter/" target="_blank" rel="external">http://css-tricks.com/almanac/properties/f/filter/</a></li>
+<li><a href="http://www.w3cplus.com/css3/ten-effects-with-css3-filter" target="_blank" rel="external">http://www.w3cplus.com/css3/ten-effects-with-css3-filter</a></li>
+</ul>
+
+            </div>
+          </section>
+
+            <nav class="pagination" role="pagination">
+    
+    <span class="page-number">•</span>
+    
+    <a class="older-posts" href="/2014/11/24/css/fontIcon/">
+        字体图标 →
+    </a>
+    
+</nav>
+            <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+    <div id="disqus_thread">
+	 <script type="text/javascript">
+	        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	        var disqus_shortname = 'thonatos'; // required: replace example with your forum shortname
+
+	        /* * * DON'T EDIT BELOW THIS LINE * * */
+	        (function() {
+	            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	        })();
+	    </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+            <!-- page-nav-start -->
+            <div class="clear" style="height: 25px;">&nbsp;</div>
+            <!-- A single blog post end -->
+        </div>
+
+        <!-- A wrapper for all the blog posts end -->
+        <div class="footer">
+    <p>Blog of Phoenix.Lu. 2014 . All Rights Reserved .</p>
+</div>
+    </div>
+</div>
+
+</div>
+<!-- footer start -->
+<!-- Le javascript
+================================================== -->
+<!-- BASE JAVASCRIPT -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://www.thonatos.com/engine/wp-content/themes/Jure-v3/style/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://cdn.bootcss.com/highlight.js/8.1/highlight.min.js"></script>
+<!--<script src="/style/js/plugin/jquery.highlight/highlight.min.js"></script>-->
+<script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+<script src="http://cdn.bootcss.com/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
+<!-- CUSTOM JAVASCRIPT -->
+<!-- PLUGIN JAVASCRIPT -->
+<script src="/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html >
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+    <!-- BASE META -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SITE TITLE -->
+    <title>Phoenix.Lu's blog</title>
+
+    <!--SITE INFO -->
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Phoenix.Lu">
+    <meta name="application-name" content="Phoenix.Lu's blog">
+    <meta name="keywords" content="Thonatos,Thonatos.Yang,Grimrock,Juy">
+    <meta name="description" content="Blog about front-end development."/>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+
+    <!-- INCLUDE STYLE -->
+    <link href='http://fonts.useso.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'/>
+    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- SITE FAVICONS -->
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/css/style-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="/css/style.css">
+    <!--<![endif]-->
+
+</head>
+<body>
+<div class="layout">
+  <!--sidebar-->
+  <div class="sidebar">
+    <!-- Side Start -->
+    <!-- Siderbar  -->
+    <div class="header">
+        <img src="/images/0.jpg" class="avatar" alt="头像" />
+        <hgroup>
+            <h1 class="brand-title"><a href="" alt="Phoenix.Lu's blog"><img class="pure-img" src="/images/osbloglg.png"/></a></h1>
+            <h2 class="brand-tagline">
+                <small>To be a better FEDer.</small>
+            </h2>
+        </hgroup>
+
+        <div id="sidebar_nav" class="pure-menu pure-menu-open">
+            <ul>
+                
+                <li><a href="/">Home</a></li>
+                
+                <li><a href="https://github.com/lzf0402">Github</a></li>
+                
+                <li><a href="/about">About</a></li>
+                
+                <li><a href="/projects">Projects</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    <!-- Side End-->
+</div>
+
+  <!--content-->
+  
+<div class="content pure-g">
+    <div class=" pure-u-1">
+        <!-- A wrapper for all the blog posts start -->
+        <a href="#menu" id="menuLink" class="menu-link">
+    <span></span>
+</a>
+<div class="content-header">
+    <div id="content-header-nav" class="pure-menu pure-menu-open">
+        <ul>
+            <li><a href="">Phoenix.Lu's blog</a></li>
+            
+            <li><a href="/">Home</a></li>
+            
+            <li><a href="https://github.com/lzf0402">Github</a></li>
+            
+            <li><a href="/about">About</a></li>
+            
+            <li><a href="/projects">Projects</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+        <div class="posts">
+            <h1 class="content-subhead"> Post </h1>
+
+            <!-- A single blog post start -->
+
+          <section class="post">
+            <header class="post-header">
+              <h2 class="post-title">WEBVTT 和 TTML, 让HTML5 video有字幕相伴</h2>
+              <p class="post-meta">
+    <time class="post-category post-category-design" datetime="2014-10-12T16:00:00.000Z" itemprop="datePublished">
+        Oct 13 2014
+    </time>
+    
+    
+    
+    <a class="post-category post-category-pure" href='/tags/HTML/'>HTML</a>
+    
+    ,
+    
+    
+    <a class="post-category post-category-pure" href='/tags/字幕/'>字幕</a>
+    
+    ,
+    
+    
+    <a class="post-category post-category-pure" href='/tags/Video-Caption/'>Video Caption</a>
+    
+    ,
+    
+    
+    <a class="post-category post-category-pure" href='/tags/TTML/'>TTML</a>
+    
+    ,
+    
+    
+    <a class="post-category post-category-pure" href='/tags/WebVTT/'>WebVTT</a>
+    
+    
+    
+</p>
+            </header>
+            <div class="post-description">
+              <blockquote>
+<p>对于视频字幕，大家都不会陌生。那对于HTML5的Video（or audio）字幕，又了解多少呢？本文先通过一个在线视频字幕制作工具来一睹Video Caption的风采，再进一步探究<strong>track元素</strong>以及两种字幕标准：<strong>webVTT</strong>和<strong>TTML</strong>。</p>
+</blockquote>
+<h3 id="视频字幕制作工具">视频字幕制作工具</h3>
+<p>先来体验一把微软的这个在线<a href="http://ie.microsoft.com/testdrive/Graphics/CaptionMaker/" title="HTML5 Video Caption Maker" target="_blank" rel="external">视频字幕制作工具</a>吧，点击下 <em>Load Sample</em> 按钮，就会在Video区域看到加载的视频了。播放这个视频再暂停，可以在下面的多行输入框里输入一些文字，保存并继续，该条字幕就出现在了右侧的字幕列表里啦~ 选取所需的时间点，重复以上动作插入多条字幕试试吧！另外，可以根据用户的需要，选择字幕的格式为TTML或WebVTT，将制作好的字幕保存成文件（对应的文件格式分别为.ttml和.vtt），并通过track元素引入该文件，嵌套到video元素内（如下代码所示），就可以在视频播放过程中看到刚制作的字幕啦~！</p>
+<pre><code>&lt;video controls <span class="variable">src=</span><span class="string">"demo.mp4"</span>&gt;
+    &lt;track <span class="variable">kind=</span><span class="string">"captions"</span> <span class="variable">src=</span><span class="string">"demo.ttml"</span> <span class="variable">srclang=</span><span class="string">"en-us"</span> <span class="variable">label=</span><span class="string">"English"</span> /&gt;
+&lt;/video&gt; 
+</code></pre><p>字幕在视频里的效果如下图：[chrome浏览器]<br><img src="https://raw.githubusercontent.com/lzf0402/videoCaption/master/demo/image1.png" alt="视频字幕效果"></p>
+<p>以上内容，了解了如何快速的制作字幕文件、字幕与时间的紧密关系以及如何在视频中引入字幕文件，下面就进一步来了解下 <strong>track</strong> 元素、<strong>webVTT</strong>和<strong>TTML</strong>吧</p>
+<h2 id="track元素">track元素</h2>
+<p><strong>track</strong> 元素（对应的<a href="http://www.w3.org/TR/html51/embedded-content.html#the-track-element" target="_blank" rel="external">W3C规范</a>），从上面代码可知，是嵌入在video元素（或audio等媒体元素）内的空内容元素，可以为用户针对视频(或音频)提供多种语言或解说词的计时文本文件。一个video标签，可设置<strong>多个</strong> 计时文本轨道，但需要指定一个default轨道。<strong>track</strong> 元素基本属性如下表：<br><img src="https://raw.githubusercontent.com/lzf0402/videoCaption/master/demo/image2.png" alt="track 元素基本属性"></p>
+<p>下面，通过一个小demo来介绍下<strong>track</strong> 元素的DOM接口：</p>
+<blockquote>
+<p>结构：</p>
+</blockquote>
+<pre><code>&lt;video <span class="variable">id=</span><span class="string">"video"</span> controls <span class="variable">src=</span><span class="string">"demo.mp4"</span>&gt;
+    &lt;track <span class="variable">src=</span><span class="string">"ds.vtt"</span> <span class="variable">id=</span><span class="string">"track"</span> <span class="variable">label=</span><span class="string">"ds vtt"</span> <span class="variable">kind=</span><span class="string">"captions"</span> <span class="variable">srclang=</span><span class="string">"en-us"</span> <span class="variable">default=</span><span class="string">""</span>&gt;
+&lt;/video&gt;
+&lt;div <span class="variable">id=</span><span class="string">"box"</span>&gt;&lt;/div&gt;
+</code></pre><p>通过JS实现，将vtt文件里设定的每一条字幕同步显示到#box节点里</p>
+<blockquote>
+<p>实现：</p>
+</blockquote>
+<pre><code><span class="comment">//页面初始化 </span>
+<span class="function"><span class="keyword">function</span> <span class="title">init</span> <span class="params">()</span> </span>{
+    <span class="keyword">var</span> trackNode = <span class="built_in">document</span>.getElementById(<span class="string">"track"</span>);
+    <span class="comment">//绑定track节点对象的load事件</span>
+    trackNode.onload = showCue(trackNode);
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">showCue</span><span class="params">(trackNode)</span></span>{
+    <span class="comment">//track节点对象有ready状态码 0=NONE 1=LOADING 2=LOADED 3=ERROR</span>
+    <span class="comment">//chrome下是2,ie下'complete'</span>
+    <span class="keyword">if</span>(trackNode.readyState == <span class="number">2</span> || trackNode.readyState == <span class="string">'complete'</span>){
+        <span class="comment">//通过track节点对象的cuechange事件，实现同步</span>
+        trackNode.addEventListener(<span class="string">"cuechange"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
+            <span class="comment">//通过track节点对象的track属性 获得文本轨道对象</span>
+            <span class="keyword">var</span> track = <span class="keyword">this</span>.track;        
+            <span class="comment">//通过文本轨道对象获得当前激活的字幕对象</span>
+            <span class="keyword">var</span> activecue = track.activeCues;
+            <span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);
+            <span class="keyword">if</span>(activecue.length &gt; <span class="number">0</span>){
+                box.innerHTML = <span class="string">''</span>;
+                <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;activecue.length;i++){
+                    <span class="comment">//在box节点里显示所有激活的字幕文本</span>
+                    box.innerHTML += activecue[i].text;
+                }
+               }
+        }, <span class="literal">false</span>); 
+    }
+}
+
+<span class="built_in">window</span>.onload = init; 
+</code></pre><p>以上代码展示了在track节点的cuechange事件里，通过其track文本轨道对象获取当前激活的一条字幕。事实上，track文本轨道对象的cues属性能获取到文本轨道的字幕列表textTrackCueList，该列表的每一项都是一个textTrackCue对象，能通过其text属性获取字幕对象的文本，或者通过getCueAsHTML()方法获取字幕对象的html结构。</p>
+<h2 id="WebVTT">WebVTT</h2>
+<p><strong>WebVTT</strong> 即The Web Video Text Tracks Format，对应的<a href="http://dev.w3.org/html5/webvtt/" title="webvtt规范" target="_blank" rel="external">W3C文档</a>，目前还不是W3C的标准。WebVTT文件是用来作为视音频内容的字幕的。 在之前的视频字幕制作工具里，应该已经对WebVTT文件格式有了基本的了解。通过下面这个简单的例子，来了解下WebVTT文件的基本语法。</p>
+<pre><code>WEBVTT demo
+
+<span class="number">00</span>:<span class="number">00.000</span> --&gt; <span class="number">00</span>:<span class="number">06.263</span> <span class="variable">id=</span><span class="string">"t0"</span>
+这是demo.vtt文件,并定义了id
+
+NOTE 我是注释,必须以“NOTE”开头，紧跟空格或换一行，上下要空行
+
+<span class="number">00</span>:<span class="number">06.263</span> --&gt; <span class="number">00</span>:<span class="number">12.880</span> <span class="variable">id=</span>'t1'
+字幕里可带标签：&lt;p <span class="variable">style=</span><span class="string">"color:#f00;"</span>&gt;我是红P&lt;/p&gt;
+字幕也可以是多行
+</code></pre><ul>
+<li>一个WebVTT文件必须要以“WEBVTT”开头，后面可以为空或者是空格加字符串。</li>
+<li>每一条字幕有一个时间段和一或多条文本组成，且上下都需空一行。</li>
+<li>时间段由1个开始时间点+“—&gt;”+1个结束时间点组成，时间段后面可以跟该条字幕的id。</li>
+<li>字幕文本可以换行，也可以带有HTML标签，标签上可以设置样式属性。但上诉代码中的“我是红P”并不会以红色显示。</li>
+<li>注释可以通过“NOTE”开头紧跟空格或换行再加注释内容的形式来添加，内容可以多行，注释也需要上下空行。</li>
+</ul>
+<p>当然，以上的例子能满足基本的字幕表现需求。那如果想要让字幕有更多更丰富的效果，又该如何来设置呢？以chrome38为例</p>
+<h5 id="1-对齐">1.对齐</h5>
+<p>字幕文本默认是居中对齐(middle)，可以通过设置align的值来改变对齐，如下所示：</p>
+<pre><code>00<span class="pseudo">:00</span><span class="pseudo">:00</span><span class="class">.500</span> <span class="tag">--</span>&gt; 00<span class="pseudo">:00</span><span class="pseudo">:04</span><span class="class">.000</span> <span class="tag">align</span><span class="pseudo">:start</span>
+我是<span class="tag">align</span>：<span class="tag">start</span>，是文本开头对齐方式
+
+00<span class="pseudo">:00</span><span class="pseudo">:04</span><span class="class">.000</span> <span class="tag">--</span>&gt; 00<span class="pseudo">:00</span><span class="pseudo">:08</span><span class="class">.000</span> <span class="tag">align</span><span class="pseudo">:end</span>
+我是<span class="tag">align</span>：<span class="tag">end</span>，是文本结尾对齐方式
+如果有两行，那两行的结尾对齐
+</code></pre><p>就chrome的实现来看，align设置了非middle值的字幕，只会占据视频宽度的50%，值为start，占据的是右半边，值为end则占据视频的左半边。如果chrome开启了 <a href="http://www.w3.org/TR/shadow-dom/" target="_blank" rel="external">shadow Dom</a>的话，可以看到字幕的结构如下图：</p>
+<p><img src="https://raw.githubusercontent.com/lzf0402/videoCaption/master/demo/image3.png" alt="字幕的shadow Dom"></p>
+<p>所以，实际的字幕文本是包在一个名为<strong>“cue”的伪元素</strong>中的。而其父节点的style属性里，设置了text-align值为start，且字幕块是绝对定位，width和left都为50%。</p>
+<h5 id="2-size">2.size</h5>
+<p>可以通过size来设置字幕文本占据视频viewport的宽度比例，如下例子：</p>
+<pre><code>00<span class="pseudo">:00</span><span class="pseudo">:15</span><span class="class">.200</span> <span class="tag">--</span>&gt; 00<span class="pseudo">:00</span><span class="pseudo">:18</span><span class="class">.700</span> <span class="tag">size</span><span class="pseudo">:10</span>%
+事实上我被设置了<span class="tag">size</span>：10%
+代表占据视频可视区域10%的宽度
+</code></pre><p>在chrome里显示的效果如下：</p>
+<p><img src="https://raw.githubusercontent.com/lzf0402/videoCaption/master/demo/image4.png" alt="size效果"></p>
+<h5 id="3-伪元素">3.伪元素</h5>
+<p>刚刚说到字幕文本实际是包在名为<strong>“cue”的伪元素</strong>中，而通过这个伪元素，我们可以轻松控制字幕文本的样式，可以设置各种你想要的效果啦。来看下面这个例子：</p>
+<pre><code>00:00:24.000 --&gt; 00:00:28.000 
+样式<span class="tag">&lt;<span class="title">v.support</span>&gt;</span>支持<span class="tag">&lt;/<span class="title">v</span>&gt;</span>么?yes,支持伪元素
+c标签也可用于设置<span class="tag">&lt;<span class="title">c.aclass</span>&gt;</span>样式噢<span class="tag">&lt;/<span class="title">c</span>&gt;</span>
+<span class="tag">&lt;<span class="title">v.third.loud</span>&gt;</span>可以在V上设定多个样式
+</code></pre><p>字幕文本可以嵌入V（voice）、C（class）这类标签，同时标签后可以跟相应的样式名称，如support、aclass等，且可设置多个样式名称（如.third.loud）。如果标签不闭合，后面内容均包含在该标签内。</p>
+<pre><code><span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
+    <span class="pseudo">::cue(</span><span class="class">.aclass</span>)<span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">28px</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#fe8</span></span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#ad9</span></span></span>;<span class="rule"><span class="attribute">font-weight</span>:<span class="value"> bold</span></span>;<span class="rule"><span class="attribute">font-family</span>:<span class="value">simsun</span></span>;<span class="rule"><span class="attribute">font-style</span>:<span class="value">italic</span></span>;<span class="rule">}</span></span>
+    <span class="pseudo">::cue(</span><span class="class">.support</span>)<span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">yellow</span></span>;<span class="rule">}</span></span>
+    <span class="pseudo">::cue(</span><span class="class">.third</span>)<span class="rules">{<span class="rule"><span class="attribute">color</span>:<span class="value">red</span></span>;<span class="rule">}</span></span>
+    <span class="pseudo">::cue(</span><span class="class">.loud</span>)<span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">2em</span></span></span>;<span class="rule"><span class="attribute">opacity</span>:<span class="value"><span class="number">0.6</span></span></span>;<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"><span class="number">0</span> <span class="number">0</span> <span class="number">3px</span> <span class="hexcolor">#fc0</span></span></span>;<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid <span class="hexcolor">#0fc</span></span></span>;<span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>;<span class="rule"><span class="attribute">padding</span>:<span class="value"><span class="number">10px</span></span></span>;<span class="rule">}</span></span>
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+</code></pre><p><strong>::cue伪元素</strong>能设置的css属性主要有：color、opacity、visibility、text-decoration、text-shadow、white-space、background系列、outline系列、font系列，其他的属性会被忽略。<br><img src="https://raw.githubusercontent.com/lzf0402/videoCaption/master/demo/image5.png" alt="伪元素效果"></p>
+<p>通过伪元素，已能在很大程度上满足自定义各种效果的字幕需求。查看<a href="http://dev.w3.org/html5/webvtt/" title="webvtt规范" target="_blank" rel="external">W3C文档</a>可以知道，还可以给字幕文本设置很多其他的样式，比如设置文本的书写方向（writing direction）,文本定位（text position）、文本轨道区域（Text Track Region）等。</p>
+<h2 id="TTML">TTML</h2>
+<p><strong>TTML</strong> 即Timed Text Markup Language，计时文本标记语言，是W3C的推荐标准（<a href="http://www.w3.org/TR/ttml1/" target="_blank" rel="external">查看文档</a>）。相对WebVTT来说，TTML可能更正统一点，尽管在浏览器实现方面还赶不上WebVTT。TTML格式的字幕文件，在chrome38里还没支持，但通过规范，先来简单了解下吧。</p>
+<h5 id="TTML文档结构">TTML文档结构</h5>
+<pre><code><span class="tag">&lt;<span class="title">tt</span> <span class="attribute">xml:lang</span>=<span class="value">""</span> <span class="attribute">xmlns</span>=<span class="value">"http://www.w3.org/ns/ttml"</span>&gt;</span> 
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>  //head标签
+    <span class="tag">&lt;<span class="title">metadata</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">styling</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">layout</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    //设置字幕
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span> 
+<span class="tag">&lt;/<span class="title">tt</span>&gt;</span>
+</code></pre><p>作为一门标记语言，TTML文档的结构也很清晰简单。tt作为根元素包裹所有的内容，且可设置语言和遵循的规范。head标签里可以设置元数据、样式和布局信息，head里包含的内容并不会作为内容显示出来，实际可显示的字幕内容是包含在body标签里的。</p>
+<h5 id="TTML_Metadata">TTML Metadata</h5>
+<p>metadata元数据标签，可以设定TTML文档的title, description, 和 copyright信息等其他任意的metadata信息。如下所示：</p>
+<pre><code><span class="tag">&lt;<span class="title">metadata</span> <span class="attribute">xmlns:ttm</span>=<span class="value">"http://www.w3.org/ns/ttml#metadata"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">ttm:title</span>&gt;</span>Timed Text TTML Example<span class="tag">&lt;/<span class="title">ttm:title</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">ttm:copyright</span>&gt;</span>The Authors (c) 2006<span class="tag">&lt;/<span class="title">ttm:copyright</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">metadata</span>&gt;</span>
+</code></pre><h5 id="TTML_Styling">TTML Styling</h5>
+<p>styling样式信息：即能按样式规范形式来设定，也可在行内设定样式信息</p>
+<pre><code><span class="tag">&lt;<span class="title">styling</span> <span class="attribute">xmlns:tts</span>=<span class="value">"http://www.w3.org/ns/ttml#styling"</span>&gt;</span>
+  <span class="comment">&lt;!-- s1 定义了文本颜色、字体、字号和对齐样式 --&gt;</span>
+  <span class="tag">&lt;<span class="title">style</span> <span class="attribute">xml:id</span>=<span class="value">"s1"</span> <span class="attribute">tts:color</span>=<span class="value">"white"</span> <span class="attribute">tts:fontFamily</span>=<span class="value">"arial"</span> <span class="attribute">tts:fontSize</span>=<span class="value">"22px"</span> <span class="attribute">tts:textAlign</span>=<span class="value">"center"</span> /&gt;</span><span class="css">
+  &lt;!<span class="tag">--</span> 除了颜色是<span class="tag">yellow</span>外，其他样式同<span class="tag">s1</span>所定义的 <span class="tag">--</span>&gt;
+  &lt;<span class="tag">style</span> <span class="tag">xml</span><span class="pseudo">:id</span>="<span class="tag">s2</span>" <span class="tag">style</span>="<span class="tag">s1</span>" <span class="tag">tts</span><span class="pseudo">:color</span>="<span class="tag">yellow</span>"/&gt; 
+&lt;/<span class="tag">styling</span>&gt;</span>
+</code></pre><p>styling标签里可以定义多条样式。每条样式需要设定一个id，且可以通过style属性“继承”别条样式的值。所以上述代码中，s2的样式继承了s1定义的样式，只把color重写了。</p>
+<h5 id="TTML_Layout">TTML Layout</h5>
+<p>layout布局信息：定义展示内容的一个或多个区域。定义region时，也可以设定或“继承”一些样式，来设置该区域内容的表现形式。</p>
+<pre><code>&lt;layout xmln<span class="variable">s:tts</span>=<span class="string">"http://www.w3.org/ns/ttml#styling"</span>&gt;
+  &lt;region <span class="keyword">xm</span><span class="variable">l:id</span>=<span class="string">"subtitleArea"</span>
+    style=<span class="string">"s1"</span>
+    tt<span class="variable">s:extent</span>=<span class="string">"560px 62px"</span>
+    tt<span class="variable">s:padding</span>=<span class="string">"5px 3px"</span>
+    tt<span class="variable">s:backgroundColor</span>=<span class="string">"black"</span>
+    tt<span class="variable">s:displayAlign</span>=<span class="string">"after"</span>
+  /&gt;
+&lt;/layout&gt;  
+</code></pre><h5 id="TTML_Body">TTML Body</h5>
+<p>上面介绍了如何定义样式信息、布局信息，那如何将这些定义好的信息运用到字幕文本里呢？看下面代码：</p>
+<pre><code>&lt;body region=<span class="string">"subtitleArea"</span>&gt;<span class="comment"> //指定已定义好的region的id</span>
+  &lt;<span class="operator">div</span>&gt;
+    &lt;p xml:id=<span class="string">"subtitle1"</span> begin=<span class="string">"0.76s"</span> <span class="function"><span class="keyword">end</span>="<span class="title">3</span>.<span class="title">45s</span>"&gt; //设定字幕的开始和结束时间点</span>
+      It seems <span class="operator">a</span> paradox, does <span class="keyword">it</span> <span class="operator">not</span>,
+    &lt;/p&gt;
+    &lt;p xml:id=<span class="string">"subtitle2"</span> begin=<span class="string">"5.0s"</span> <span class="function"><span class="keyword">end</span>="<span class="title">10</span>.<span class="title">0s</span>" <span class="title">style</span>="<span class="title">s2</span>"&gt;//设定已定义的样式</span>
+      that <span class="operator">the</span> image formed <span class="command"><span class="keyword">on</span>&lt;<span class="title">br</span>/&gt; //换行用<span class="title">br</span>标签</span>
+      <span class="operator">the</span> Retina should be inverted?
+    &lt;/p&gt;
+  &lt;/<span class="operator">div</span>&gt;
+&lt;/body&gt;
+</code></pre><p>因为目前浏览器没有很好的支持TTML格式，所以这些效果都无法预览。但根据W3C上的规范，已大概能预见到浏览器会实现出的效果。以上只是对TTML的一个概览性的介绍。</p>
+<h2 id="结语">结语</h2>
+<p>本文对<strong>track元素</strong>以及两种字幕文件格式<strong>webVTT</strong>和<strong>TTML</strong>进行了介绍，较偏向于使用层面。一来是对HTML5新加的Video元素和Track元素有进一步认识；二来是想掌握W3C标准组在视频字幕方面的一些动向，虽未列为标准，但作为一个前瞻性的内容先入个门。 随着浏览器如此快速的版本更新，相信不久的将来，各大浏览器厂商在视频字幕方面都会有进一步的支持。</p>
+
+            </div>
+          </section>
+
+            <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2014/11/10/develop/snippetOfNEC/">
+        ← snippet，你用活了么?
+    </a>
+    
+    <span class="page-number">•</span>
+    
+</nav>
+            <div id="comment" class="comments-area">
+    <h1 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h1>
+
+    
+    <div id="disqus_thread">
+	 <script type="text/javascript">
+	        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	        var disqus_shortname = 'thonatos'; // required: replace example with your forum shortname
+
+	        /* * * DON'T EDIT BELOW THIS LINE * * */
+	        (function() {
+	            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	        })();
+	    </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+    
+</div>
+            <!-- page-nav-start -->
+            <div class="clear" style="height: 25px;">&nbsp;</div>
+            <!-- A single blog post end -->
+        </div>
+
+        <!-- A wrapper for all the blog posts end -->
+        <div class="footer">
+    <p>Blog of Phoenix.Lu. 2014 . All Rights Reserved .</p>
+</div>
+    </div>
+</div>
+
+</div>
+<!-- footer start -->
+<!-- Le javascript
+================================================== -->
+<!-- BASE JAVASCRIPT -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://www.thonatos.com/engine/wp-content/themes/Jure-v3/style/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://cdn.bootcss.com/highlight.js/8.1/highlight.min.js"></script>
+<!--<script src="/style/js/plugin/jquery.highlight/highlight.min.js"></script>-->
+<script src="http://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+<script src="http://cdn.bootcss.com/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
+<!-- CUSTOM JAVASCRIPT -->
+<!-- PLUGIN JAVASCRIPT -->
+<script src="/js/app.js"></script>
+
+</body>
+</html>

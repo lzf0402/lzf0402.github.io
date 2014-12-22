@@ -1,0 +1,7 @@
+{
+  "input": "style/",  
+  "outport": "../",
+  "format": 2,
+  "watch": true,
+  "exclude": "(\\\\|\\/)_"
+}
